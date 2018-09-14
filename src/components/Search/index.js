@@ -52,7 +52,8 @@ class Search extends React.Component{
     // }
 
     formatUserData (cb) {
-        const data = this.props.search.UserData.reduce((arr, data) => {
+        var newArr = JSON.parse(JSON.stringify(this.props.search.UserData));
+        newArr.reduce((arr, data) => {
           data['address'] = {}
           data['address']['house_number']= data['house_number'];
           data['address']['street_name']= data['street_name'];
@@ -79,7 +80,7 @@ class Search extends React.Component{
           arr.push(data)
           return arr;
         }, []);
-        cb(data)
+        cb(newArr)
       }
 
       escapeRegExp (){
